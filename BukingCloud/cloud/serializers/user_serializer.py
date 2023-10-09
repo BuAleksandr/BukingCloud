@@ -12,10 +12,10 @@ class RegistrUserSerializer(serializers.ModelSerializer):
 
     def save(self):
         user = User(
-            email = self.validated_data['email'],
-            username = self.validated_data['username'],
-            first_name = self.validated_data['first_name'],
-            last_name = self.validated_data['last_name']
+            email=self.validated_data['email'],
+            username=self.validated_data['username'],
+            first_name=self.validated_data['first_name'],
+            last_name=self.validated_data['last_name']
         )
 
         password = self.validated_data['password']
