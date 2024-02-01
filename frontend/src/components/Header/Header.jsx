@@ -16,7 +16,7 @@ function Header() {
         <Link
           to="/"
         >
-          CoconutCloud
+          BukingCloud
         </Link>
       </div>
       { currentStorageUser
