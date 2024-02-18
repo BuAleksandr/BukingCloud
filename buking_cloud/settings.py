@@ -152,14 +152,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_HEADERS = [
-    'content-type',
-    'authorization',
-    'X-CSRFToken',
+CORS_ALLOW_CREDENTIALS=True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://w+/.example/.com$",
 ]
+
+CORS_URLS_REGEX = r"^/api/.*$"
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Credentials',
+    'Access-Control-Allow-Origin',
+)
 
 CORS_ALLOW_METHODS = [
     'GET',
@@ -167,8 +174,29 @@ CORS_ALLOW_METHODS = [
     'PUT',
     'DELETE',
     'PATCH',
+    'OPTIONS',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000/',
+    'http://127.0.0.1:8000/',
+    'http://80.78.243.174:8000/'
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000/',
+    'http://127.0.0.1:8000/',
+    'http://80.78.243.174:8000/'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000/',
+    'http://127.0.0.1:8000/',
+    'http://80.78.243.174:8000/'
+]
 
 SESSION_COOKIE_HTTPONLY = False
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY=None
+
+SESSION_COOKIE_SECURE=False
